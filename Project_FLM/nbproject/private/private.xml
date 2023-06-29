@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/controller/SessionListController.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/controller/DecisionDetailController.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/web/view/common/sessionList.jsp</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/model/Syllabus.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/util/Constants.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/dao/CurriculumDao.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/dao/SyllabusDao.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/web/view/common/decisionDetail.jsp</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/controller/DecisionAddController.java</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/web/view/common/decisionAdd.jsp</file>
+            <file>file:/D:/SE/ky5/SWP391/G/g5/Project_FLM/src/java/controller/DecisionController.java</file>
+        </group>
+    </open-files>
+</project-private>
