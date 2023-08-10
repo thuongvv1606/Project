@@ -1,0 +1,58 @@
+﻿@model Assignment_PRN211.Models.User
+
+@{
+    ViewData["Title"] = "Account";
+}
+
+<h1>Tạo tài khoản</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDob" class="control-label"></label>
+                <input asp-for="UserDob" class="form-control" />
+                <span asp-validation-for="UserDob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserGender" class="control-label"></label>
+                <input asp-for="UserGender" name="UserGender" class="form-check-input ms-auto" type="radio" id="flexSwitchCheckDefault" value="true" checked>Male
+                <input asp-for="UserGender" name="UserGender" class="form-check-input ms-auto" type="radio" id="flexSwitchCheckDefault" value="false" checked>Femal
+                <span asp-validation-for="UserGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAdmin" class="control-label"></label>
+                <input asp-for="IsAdmin" name="IsAdmin" class="form-check-input ms-auto" type="radio" id="flexSwitchCheckDefault" value="true" checked>Admin
+                <input asp-for="IsAdmin" name="IsAdmin" class="form-check-input ms-auto" type="radio" id="flexSwitchCheckDefault" value="false" checked>Student
+                <span asp-validation-for="UserGender" class="text-danger"></span>
+                <span asp-validation-for="IsAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Account" asp-action="List" class="btn theme_btn button_hover" style="margin: auto">Quay về trang trước</a>
+</div>
+
+

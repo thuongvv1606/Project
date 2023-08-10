@@ -1,0 +1,77 @@
+﻿@model Assignment_PRN211.Models.User
+
+@{
+    ViewData["Title"] = "Account";
+}
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+<h1>Thông tin tài khoản</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ID:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            Họ tên:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            Ngày sinh: 
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserDob)
+        </dd>
+        <dt class="col-sm-2">
+            Giới tính:
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.UserGender == true)
+            {
+                <p>Nam</p>
+            } else
+            {
+                <p>Nữ</p>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Vai trò
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IsAdmin == true)
+            {
+                <p>Admin</p>
+            }
+            else
+            {
+                <p>Sinh viên</p>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Trạng thái tài khoản
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IsAdmin == true)
+            {
+                <p>Hoạt động</p>
+            }
+            else
+            {
+                <p>Vô hiệu hóa</p>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+        <a asp-controller="Account" asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-primary">Chỉnh sửa </a> |
+        <a asp-controller="Account" asp-action="List" class="btn btn-primary">Quay về trang trước</a>
+</div>
+</div>

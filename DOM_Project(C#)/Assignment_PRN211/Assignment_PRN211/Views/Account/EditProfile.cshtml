@@ -1,0 +1,98 @@
+﻿@model Assignment_PRN211.Models.User;
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Account";
+}
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+        <div class="row gx-4 mb-2">
+            <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                    @if (Model == null)
+                    {
+                        <img src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+                    @if (Model != null && Model.UserGender == true)
+                    {
+                        <img src="https://image.vietstock.vn/avatar/Tran-Long_81690d74-e698-46dc-beb7-e8ca30fa78d1.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+                    @if (Model != null && Model.UserGender == false)
+                    {
+                        <img src="https://cdnx.voh.com.vn/voh/useravatar/2022/04/12/nh-dai-dien-FB-mac-dinh-nu.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+                </div>
+            </div>
+            <div class="col-auto my-auto">
+                <div class="h-100">
+                    <h5 class="mb-1">
+                        @Model.UserId
+                    </h5>
+                    <p class="mb-0 font-weight-normal text-sm">
+                        @(Model.IsAdmin == true ? "Admin" : "Student")
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form asp-action="EditProfile">
+            <div class="row">
+                <div class="col-6 col-xl-6">
+                    <div class="card card-plain h-100">
+                        <div class="card-header pb-0 p-3">
+                            <div class="row">
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <h6 class="mb-0">Thông tin cá nhân</h6>
+                                </div>
+                            </div>
+                            <div class="card-body p-3">
+                                <hr class="horizontal gray-light my-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                        <strong class="text-dark">Họ tên:</strong>
+                                        <input type="text" asp-for="UserName" class="form-control" style="border: 1px solid black;" required />
+                                    </li>
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">Giới tính:</strong> <span style="padding-right: 15px;"></span>
+                                        @if (Model.UserGender == true)
+                                        {
+                                            <input type="radio" value="true" name="gender" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="radio" value="true" name="gender" />
+                                        }
+                                        Nam
+                                        @if (Model.UserGender == true)
+                                        {
+                                            <input type="radio" value="false" name="gender" />
+                                        }
+                                        else
+                                        {
+                                            <input type="radio" value="false" name="gender" checked />
+                                        }
+                                        Nữ<br />
+                                    </li>
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">Ngày sinh:</strong>
+                                        <input type="datetime-local" asp-for="UserDob" class="form-control" min="01/01/1940" max="31/12/2010" style="border: 1px solid black;" />
+                                    </li>
+                                    <input type="hidden" asp-for="UserId" />
+                                    <input type="hidden" asp-for="IsAdmin" />
+                                    <input type="hidden" asp-for="Password" />
+                                    <input type="hidden" asp-for="IsActive" />
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Chỉnh sửa" class="btn btn-primary" /> |
+                                <a asp-controller="Account" asp-action="Index" class="btn btn-primary">Hủy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

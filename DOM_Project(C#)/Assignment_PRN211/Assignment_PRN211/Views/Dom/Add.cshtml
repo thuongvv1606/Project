@@ -1,0 +1,40 @@
+﻿@model Assignment_PRN211.Models.Dormitory
+
+@{
+    ViewData["Title"] = "Dom";
+}
+
+<h3 class="mb-30 title_color">Thêm mới Tòa kí túc xá</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style="color: red">@ViewBag.error</p>
+			<div class="mt-10">
+                <input type="hidden" asp-for="DomId" value="@(ViewBag.count + 1)">
+			</div>
+			<div class="mt-10">
+                Tên Tòa <span style="color: red">*</span>:
+                <input style="border: 1px solid black;" type="text" asp-for="DomName" 
+                placeholder="Tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên'" required class="single-input"
+                       pattern="[a-zA-Z]{1}"
+                       onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Tên tòa phải là 1 chữ cái.' : '')">
+				<span asp-validation-for="DomName" class="text-danger"></span>
+			</div>
+            <div class="form-group">
+				<button class="btn theme_btn button_hover" style="margin: auto">Thêm mới</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" style="display: flex">
+    <a asp-controller="Dom" asp-action="Index" class="btn theme_btn button_hover" style="margin: auto">Quay về trang trước</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

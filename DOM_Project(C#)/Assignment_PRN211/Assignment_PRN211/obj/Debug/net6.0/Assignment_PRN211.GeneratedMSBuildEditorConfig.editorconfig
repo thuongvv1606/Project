@@ -1,0 +1,197 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Assignment_PRN211
+build_property.RootNamespace = Assignment_PRN211
+build_property.ProjectDir = D:\prn211_project\assignment_PRN211\Assignment_PRN211\Assignment_PRN211\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\prn211_project\assignment_PRN211\Assignment_PRN211\Assignment_PRN211
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/ChangePass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Account/Money.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxNb25leS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Booking/ChangeRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xDaGFuZ2VSb29tLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Booking/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Booking/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Booking/Request.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Booking/RequestChangeRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xSZXF1ZXN0Q2hhbmdlUm9vbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Category/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Category/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Category/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Dom/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9tXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Dom/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9tXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Dom/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9tXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Dom/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9tXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Dom/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9tXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Room/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Room/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Room/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Room/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Semester/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VtZXN0ZXJcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Semester/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VtZXN0ZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Semester/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VtZXN0ZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Semester/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VtZXN0ZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Semester/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VtZXN0ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Shared/Error_Authourized.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yX0F1dGhvdXJpemVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Shared/_Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/UserAccess/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY2Vzc1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/UserAccess/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY2Vzc1xSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prn211_project/assignment_PRN211/Assignment_PRN211/Assignment_PRN211/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-0udioqq2j4

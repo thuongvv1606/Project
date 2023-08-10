@@ -1,0 +1,30 @@
+﻿@model Assignment_PRN211.Models.Dormitory
+
+@{
+    ViewData["Title"] = "Dom";
+}
+
+<h3 class="mb-30 title_color">Xóa Tòa kí túc xá</h3>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            ID Tòa
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DomId)
+        </dd>
+        <dt class="col-sm-2">
+            Tên Tòa
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DomName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DomId" />
+        <button type="submit" class="btn theme_btn button_hover">Xóa</button> |
+        <a asp-controller="Dom" asp-action="Index" class="btn theme_btn button_hover">Hủy</a>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+﻿@model Assignment_PRN211.Models.RoomCategory
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h3 class="mb-30 title_color">Chỉnh sửa Loại phòng kí túc xá</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style="color: red">@ViewBag.error</p>
+            <div class="form-group">
+                Mã Loại phòng
+                <input type="text" asp-for="CategoryId" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                Tên Loại Phòng
+                <input asp-for="CategoryName" class="form-control" required/>
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Giá phòng
+                <input style="border: 1px solid black;" type="number" asp-for="Price" required class="single-input" min="0" max="10000000" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn theme_btn button_hover">Chỉnh sửa</button> |
+                <a asp-controller="Category" asp-action="Index" class="btn theme_btn button_hover">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

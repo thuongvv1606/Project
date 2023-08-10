@@ -1,0 +1,45 @@
+﻿@model Assignment_PRN211.Models.Room
+
+@{
+    ViewData["Title"] = "Dom";
+}
+
+<h3 class="mb-30 title_color">Thêm phòng mới</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style="color: red">@ViewBag.error</p>
+            <div class="form-group">
+                Mã Tòa <span style="color: red">*</span>:
+                <select asp-for="DomId" class="form-control" asp-items="@ViewBag.Dom"></select>
+            </div>
+            <div class="form-group">
+                Mã Phòng <span style="color: red">*</span>:
+                <input asp-for="RoomId" class="form-control" pattern="[a-zA-Z]{1}[0-9]{3}"
+                       required onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Mã phòng phải đúng định dạng [Tên tòa][3 chữ số].' : '')" />
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Loại phòng <span style="color: red">*</span>:
+                <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                Giới tính <span style="color: red">*</span>:<span style="padding-right: 60px;"></span>
+                <input type="radio" value="true" name="gender" /> Male <span style="padding-right: 30px;"></span>
+                <input type="radio" value="false" name="gender" /> Female<br />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn theme_btn button_hover">Thêm mới</button> |
+                <a asp-controller="Room" asp-action="List" class="btn theme_btn button_hover">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

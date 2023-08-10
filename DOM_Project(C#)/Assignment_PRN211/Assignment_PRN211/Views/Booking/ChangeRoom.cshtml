@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Assignment_PRN211.Models.ChangeRoomRequest>;
+@{
+    ViewData["Title"] = "Request ChangeRoom";
+}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://img.freepik.com/free-vector/illustration-university-graduates_53876-28466.jpg?q=10&h=200');">
+            <span class="mask  bg-gradient-primary  opacity-6"></span>
+        </div>
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Đơn đổi chéo phòng</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã số sinh viên yêu cầu đổi chéo phòng với bạn</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã giường người yêu cầu đổi chéo</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mã giường của bạn</th>
+                                    <th class="text-center text-secondary text-xxs opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <form asp-controller="Booking" asp-action="Request">
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@item.UserId1</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                    @item.RoomId1 - @item.BedId1
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                    @item.RoomId2 - @item.BedId2
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                <button class="btn btn-primary" type="submit" asp-route-act="add" asp-route-uid="@item.UserId2" asp-route-sid="@item.UserId1" asp-route-rid1="@item.RoomId1" asp-route-bid1="@item.BedId1"
+                                                        asp-route-rid2="@item.RoomId2" asp-route-bid2="@item.BedId2">
+                                                    Đồng ý
+                                                </button>
+                                            </span> |
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                <button class="btn btn-primary" type="submit" asp-route-act="delete" asp-route-uid="@item.UserId2" asp-route-sid="@item.UserId1" asp-route-rid1="@item.RoomId1" asp-route-bid1="@item.BedId1"
+                                                        asp-route-rid2="@item.RoomId2" asp-route-bid2="@item.BedId2">
+                                                    Hủy
+                                                </button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    }
+                                </form>
+                            </tbody>
+                        </table>
+                        <p style="color: red">@ViewBag.error</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@inject IHttpContextAccessor context;
+@model IEnumerable<Assignment_PRN211.Models.RoomCategory>
+@using Newtonsoft.Json;
+<section class="banner_area">
+    <div class="booking_table d_flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h6>Nhanh chóng trở thành thành viên của gia đình</h6>
+                <h2>F-DOM</h2>
+                <p>Nếu bạn là sinh viên trường F thì còn chần chừ gì mà không đăng kí kí túc xá FDOM nhỉ.</p>
+                @if (context.HttpContext.Session.GetString("user") != null)
+                {
+                    <a asp-controller="UserAccess" asp-action="Login" class="btn theme_btn button_hover">Hãy bắt đầu ngay</a>
+                } else
+                {
+                    <a asp-controller="Booking" asp-action="Index" class="btn theme_btn button_hover">Hãy bắt đầu ngay</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="hotel_booking_area position">
+        <div class="container">
+            <div class="hotel_booking_table">
+                <div class="col-md-9">
+                    <h2>Đăng kí Phòng của Bạn</h2>
+                </div>
+                <div class="col-md-3">
+                    <div class="boking_table">
+                        @if (context.HttpContext.Session.GetString("user") == null)
+                        {
+                            <a class="book_now_btn button_hover" asp-controller="UserAccess" asp-action="Login">Đăng kí dom ngay</a>
+                        }
+                        else
+                        {
+                            @if (context.HttpContext.Session.GetString("user") != null
+                                         && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false)
+                            {
+                                <a class="book_now_btn button_hover" asp-controller="Booking" asp-action="Index">Đăng kí dom ngay</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================ Accomodation Area  =================-->
+    <section class="accomodation_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 class="title_color">Các loại phòng Kí túc xá</h2>
+                <p>Kí túc xá tại trường F được chia làm ba loại phòng chính, phân đều tại các tòa nhà. <br />Tùy theo từng loại phòng mà nội thất và chi phí cũng sẽ có những sự thay đổi khác nhau.</p>
+            </div>
+            <div class="row mb_30">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="accomodation_item text-center">
+                            <div class="hotel_img">
+                                @if (item.CategoryId == 3)
+                                {
+                                    <img src="~/image/room1.jpg" alt="">
+                                }
+                                else if (item.CategoryId == 2)
+                                {
+                                    <img src="~/image/room2.jpg" alt="">
+                                }
+                                else
+                                {
+                                    <img src="~/image/room4.jpg" alt="">
+                                }
+                                <a href="Category/Detail/@item.CategoryId" class="btn theme_btn button_hover">Chi tiết</a>
+                            </div>
+                            <h4 class="sec_h4">@item.CategoryName</h4>
+                            <h5>@((int)item.Price) đ<small>/tháng</small></h5>
+                            <h6>~ @((int)item.Price * 4) đ/học kì</h6>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <!--================ Accomodation Area  =================-->
+</section>
+<!--================Banner Area =================-->

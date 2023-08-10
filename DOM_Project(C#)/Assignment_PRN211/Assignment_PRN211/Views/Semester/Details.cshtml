@@ -1,0 +1,36 @@
+﻿@model Assignment_PRN211.Models.Semester
+
+@{
+    ViewData["Title"] = "Semester";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Semester</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SemesterName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SemesterName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.SemesterId">Edit</a> |
+    <a asp-controller="Semester" asp-action="Index">Back to List</a>
+</div>

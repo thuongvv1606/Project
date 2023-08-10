@@ -1,0 +1,46 @@
+﻿@model Assignment_PRN211.Models.RoomCategory
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h3 class="mb-30 title_color">Thêm mới Loại phòng Kí túc xá</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style="color: red">@ViewBag.error</p>
+            <div class="mt-10">
+                <input type="hidden" asp-for="CategoryId" value="@(ViewBag.count + 1)">
+            </div>
+            <div class="mt-10">
+                Tên Loại Phòng <span style="color: red">*</span>:
+                <input style="border: 1px solid black;" type="text" asp-for="CategoryName"
+                       placeholder="Tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên'" required class="single-input"
+                       pattern="Phòng [0-9]{1,2} người"
+                       onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Tên phân loại phải đúng định dạng 'Phòng [1 hoặc 2 chữ số] người'.' : '')">
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Giá phòng <span style="color: red">*</span>:
+                <input style="border: 1px solid black;" type="number" asp-for="Price" placeholder="Giá" onfocus="this.placeholder = ''" 
+                onblur="this.placeholder = 'Giá'" required class="single-input" min="0" max="10000000" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn theme_btn button_hover" style="margin: auto">Thêm mới</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" style="display: flex">
+    <a asp-controller="Category" asp-action="Index" class="btn theme_btn button_hover" style="margin: auto">Quay về trang trước</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

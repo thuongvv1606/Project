@@ -1,0 +1,31 @@
+﻿@model Assignment_PRN211.Models.RoomCategory
+
+@{
+    ViewData["Title"] = "Category";
+}
+<h3 class="mb-30 title_color">Xóa Loại phòng kí túc xá</h3>
+<hr />
+<div>
+    <h4>RoomCategory</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            Giá 
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoryId" />
+    <button type="submit" class="btn theme_btn button_hover">Xóa</button> |
+    <a asp-controller="Category" asp-action="Index" class="btn theme_btn button_hover">Hủy</a>
+    </form>
+</div>

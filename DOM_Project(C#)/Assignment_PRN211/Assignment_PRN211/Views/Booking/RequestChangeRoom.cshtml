@@ -1,0 +1,93 @@
+﻿@model Assignment_PRN211.Models.ChangeRoomRequest
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Booking";
+    var userid = JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).UserId;
+    var cate = ViewBag.cate;
+    var room = ViewBag.room;
+    Fee fee = ViewBag.fee;
+    Order order = ViewBag.order;
+}
+
+<h3 class="mb-30 title_color">Đặt phòng Kí túc xá</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Booking" asp-action="RequestChangeRoom" asp-route-uid="@ViewBag.uid" asp-route-id="@ViewBag.id" asp-route-roomid="@ViewBag.roomid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p style="color: red">@ViewBag.error</p>
+            @if (ViewBag.error != null)
+            {
+                <p style="color: red">Bạn vui lòng nạp thêm tiền tại <a asp-controller="Account" asp-action="Money">đây</a>.</p>
+            }
+            <div class="form-group">
+                Mã số sinh viên của bạn
+                <input name="sid" class="form-control" value="@userid" readonly>
+            </div>
+            <div class="form-group">
+                Mã phòng hiện tại của bạn
+                @if (order == null)
+                {
+                    <input name="rid" class="form-control" value="" readonly>
+                }
+                else
+                {
+                    <input name="rid" class="form-control" value="@order.RoomId" readonly>
+                }
+            </div>
+            <div class="form-group">
+                Mã giường hiện tại của bạn
+                @if (order == null)
+                {
+                    <input name="bid" class="form-control" value="" readonly>
+                }
+                else
+                {
+                    <input name="bid" class="form-control" value="@order.BedId" readonly>
+                }
+            </div>
+            <div class="form-group">
+                Mã số sinh viên bạn yêu cầu đổi chéo phòng
+                <input name="uid" class="form-control" value="@ViewBag.uid" readonly>
+            </div>
+            <div class="form-group">
+                Mã phòng bạn muốn đổi chéo
+                <input name="roomid" class="form-control" value="@ViewBag.roomid" readonly>
+            </div>
+            <div class="form-group">
+                Mã giường bạn muốn đổi chéo
+                <input name="id" class="form-control" value="@ViewBag.id" readonly>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn theme_btn button_hover">Đổi chéo phòng</button> |
+                <a asp-controller="Room" asp-action="Detail" asp-route-id="@ViewBag.roomid" class="btn theme_btn button_hover">Hủy</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="accomodation_item text-center">
+            <div class="hotel_img">
+                @if (cate.CategoryId == 3)
+                {
+                    <img src="~/image/room1.jpg" alt="">
+                }
+                else if (cate.CategoryId == 2)
+                {
+                    <img src="~/image/room2.jpg" alt="">
+                }
+                else
+                {
+                    <img src="~/image/room4.jpg" alt="">
+                }
+            </div>
+            <h4 class="sec_h4">@room.Category.CategoryName</h4>
+            <h5> @((int)room.Category.Price) đ<small>/tháng</small></h5>
+            <h6>~ @((int)room.Category.Price * 4) đ/học kì</h6>
+        </div>
+        <div class="accomodation_item text-center">
+            <h5><small>Số dư tài khoản hiện tại của bạn: </small>@((int)fee.Fee1)đ</h5>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,210 @@
+﻿@using Assignment_PRN211.Models;
+@model IEnumerable<Assignment_PRN211.Models.Room>
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Booking";
+    List<Dormitory> dom = ViewBag.dom;
+    List<RoomCategory> cate = ViewBag.cate;
+    RequestBooking req = ViewBag.request;
+    Order order = ViewBag.order;
+    ChangeRoomRequest change = ViewBag.change;
+    List<Order> o = ViewBag.O;
+}
+<style>
+    th {
+        background-color: #f3c300;
+        color: white;
+    }
+</style>
+
+<body style="background-color: #FFD700;">
+    <div class="row mb_30" style="background-color: #ffffff; margin: 1px">
+        @if (req == null && change == null)
+        {
+            <div class="col-md-12">
+                @if (order == null)
+                {
+                    <div class="text-center">
+                        <h2 class="title_color" style="margin-top: 10px">Đặt phòng kí túc xá</h2>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <h2 class="title_color" style="margin-top: 10px">Đổi phòng kí túc xá</h2>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="text-center accomodation_item ">
+                            <h2 class="title_color" style="margin-top: 10px">Phòng hiện tại của bạn</h2>
+                            <h4>Thông tin phòng đã đặt</h4>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <th>Mã số sinh viên</th>
+                                <th>Mã phòng</th>
+                                <th>Mã giường</th>
+                                <th>Giá</th>
+                            </tr>
+                            <tr>
+                                <td>@order.UserId</td>
+                                <td>@order.RoomId</td>
+                                <td>@order.BedId</td>
+                                <td>@((int)ViewBag.price * 4)đ/học kì</td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+                <div>
+                    @if (Model.Count() == 0)
+                    {
+                        @if (ViewBag.countChange > 0)
+                        {
+                            <p>Bạn có @ViewBag.countChange đơn đổi phòng. Nhấn vào <a asp-controller="Booking" asp-action="ChangeRoom">đây</a> để kiểm tra.</p>
+                        }
+                        <div class="col-md-12">
+                            <form asp-controller="Booking" asp-action="Index">
+                                <div style="float: right; margin: 7px">
+                                    <input type="text" name="search" value="@ViewBag.search">
+                                    <button class="btn theme_btn button_hover"><i class="fa fa-search" style="color:white"></i></button>
+                                </div>
+                            </form>
+                            <div class="col-md-9" style="text-align: center; float: none;">
+                                <h4 style="color: darkorange; padding-top: 90px; margin: auto">
+                                    Không tìm thấy phòng nào tại tòa kí túc xá này.
+                                </h4>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @if (ViewBag.countChange > 0)
+                        {
+                            <p>Bạn có @ViewBag.countChange đơn đổi phòng. Nhấn vào <a asp-controller="Booking" asp-action="ChangeRoom">đây</a> để kiểm tra.</p>
+                        }
+                        <div class="col-md-12">
+                            <form asp-controller="Booking" asp-action="Index" asp-route-dom="@ViewBag.dom" asp-route-cate="@ViewBag.cate"
+                                  asp-route-search="@ViewBag.search" asp-route-pageNumber="@ViewBag.page">
+                                <div style="float: right; margin: 7px">
+                                    <input type="text" name="search" value="@ViewBag.search">
+                                    <button class="btn theme_btn button_hover"><i class="fa fa-search" style="color:white"></i></button>
+                                </div>
+                                <div>
+                                    <p style="color: green">Tìm thấy <b>@ViewBag.count</b> phòng</p>
+                                </div>
+                            </form>
+                            <table class="table" style="float: none">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Mã phòng
+                                        </th>
+                                        <th>
+                                            Dom
+                                        </th>
+                                        <th>
+                                            Phân loại
+                                        </th>
+                                        <th>Số giường trống</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RoomId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Dom.DomName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                            </td>
+                                            <td>
+                                                @if (int.Parse(item.Category.CategoryName.Split(" ")[1]) - o.Where(p => p.RoomId == item.RoomId).ToList().Count() == 0)
+                                                {
+                                                    <p style="color: red">@(int.Parse(item.Category.CategoryName.Split(" ")[1]) - o.Where(p => p.RoomId == item.RoomId).ToList().Count())</p>
+                                                }
+                                                else
+                                                {
+                                                    <p style="color: green">@(int.Parse(item.Category.CategoryName.Split(" ")[1]) - o.Where(p => p.RoomId == item.RoomId).ToList().Count())</p>
+                                                }
+                                            </td>
+                                            <td><a asp-controller="Room" asp-action="Detail" asp-route-id="@item.RoomId">Chi tiết</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @for (int i = 1; i < (Math.Round(ViewBag.count / 10d, 1)); i++)
+                            {
+                                <a asp-controller="Booking" asp-action="Index" asp-route-dom="@ViewBag.dom" asp-route-cate="@ViewBag.cate"
+                                   asp-route-search="@ViewBag.search" asp-route-pageNumber="@i"
+                                   class="btn btn-default">
+                                    @i
+                                </a>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            @if (req != null)
+            {
+                <div class="col-md-12">
+                    <div class="text-center accomodation_item ">
+                        <img src="https://lsx.vn/wp-content/uploads/2021/10/Dich-vu-tra-cuu-so-do-tai-quan-Nam-Tu-Liem.png" class="hotel_img">
+                        <h2 class="title_color" style="margin-top: 10px">Đơn đặt phòng của bạn đang chờ duyệt!</h2>
+                        <h4>Thông tin yêu cầu đặt phòng của bạn</h4>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Mã số sinh viên</th>
+                            <th>Mã phòng</th>
+                            <th>Mã giường</th>
+                            <th>Giá</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>@req.UserId</td>
+                            <td>@req.RoomId</td>
+                            <td>@req.BedId</td>
+                            <td>@((int)ViewBag.price * 4)đ/học kì</td>
+                            <td><a asp-controller="Booking" asp-action="Index" asp-route-oid="@((int)ViewBag.price * 4)">Hủy</a></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <div class="text-center accomodation_item ">
+                        <img src="https://lsx.vn/wp-content/uploads/2021/10/Dich-vu-tra-cuu-so-do-tai-quan-Nam-Tu-Liem.png" class="hotel_img">
+                        <h2 class="title_color" style="margin-top: 10px">Đơn đổi chéo phòng của bạn đang chờ duyệt!</h2>
+                        <h4>Thông tin yêu cầu đổi chéo phòng của bạn</h4>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Mã số sinh viên của bạn</th>
+                            <th>Phòng hiện tại của bạn</th>
+                            <th>Mã số sinh viên muốn yêu cầu đổi chéo phòng</th>
+                            <th>Phòng muốn đổi chéo</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>@change.UserId1</td>
+                            <td>@change.RoomId1 - @change.BedId1</td>
+                            <td>@change.UserId2</td>
+                            <td>@change.RoomId2 - @change.BedId2</td>
+                            <td><a asp-controller="Booking" asp-action="Index" asp-route-cid="@change">Hủy</a></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        }
+    </div>
+</body>

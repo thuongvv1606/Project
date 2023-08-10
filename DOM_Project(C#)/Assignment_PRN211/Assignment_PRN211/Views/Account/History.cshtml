@@ -1,0 +1,62 @@
+﻿@model Assignment_PRN211.Models.User;
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Account";
+}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://bizweb.dktcdn.net/100/422/320/collections/16.jpg?v=1654070421470');">
+            <span class="mask  bg-gradient-primary  opacity-6"></span>
+        </div>
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Lịch sử Phòng ở</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Học kì</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ngày bắt đầu</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày kết thúc</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Tòa</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Phòng</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Giường</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model.Orders.OrderBy(p => p.Semester.StartTime)) {
+                                <tr>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@item.Semester.SemesterId</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@(String.Format("{0:dd/MM/yyyy}", item.Semester.StartTime))</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@(String.Format("{0:dd/MM/yyyy}", item.Semester.EndTime))</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@(item.RoomId.Substring(0,1))</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@item.RoomId</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@item.BedId</span>
+                                        </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

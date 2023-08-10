@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Assignment_PRN211.Models.Dormitory>
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Dom";
+}
+
+<!--================ Accomodation Area  =================-->
+<section class="accomodation_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_color">Các tòa Kí túc xá</h2>
+            <p>Khu ký túc xá trường Đại học FPT được xây dựng với thiết kế hiện đại,<br /> thoáng mát và đầy đủ tiện nghi. Khu ký túc xá FPT có 6 khối nhà KTX: A, B, C, D, E, F.</p>
+        </div>
+        @if (context.HttpContext.Session.GetString("user") != null
+            && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == true)
+        {
+        <div class="row" style="margin: 5px 0">
+            <a asp-controller="Dom" asp-action="Add" class="btn theme_btn button_hover">Thêm tòa kí túc xá</a>
+        </div>
+        }
+        <div class="row mb_30">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-sm-1">
+                    <div class="accomodation_item text-center">
+                        <div class="hotel_img">
+                            @if (item.DomId == 1)
+                            {
+                                <img src="~/image/doma.jpg" alt="" style="width: 100%">
+                            }
+                            else if (item.DomId == 2)
+                            {
+                                <img src="~/image/domb.jpg" alt="" style="width: 100%; height:auto">
+                            }
+                            else if (item.DomId == 3)
+                            {
+                                <img src="~/image/domc.jpg" alt="" style="width: 100%">
+                            }
+                            else if (item.DomId == 4)
+                            {
+                                <img src="~/image/domd.jpg" alt="" style="width: 100%">
+                            }
+                            else if (item.DomId == 5)
+                            {
+                                <img src="~/image/dome.jpg" alt="" style="width: 100%">
+                            }
+                            else
+                            {
+                                <img src="~/image/domf.jpg" alt="" style="width: 100%">
+                            }
+                            <a href="Dom/Detail/@item.DomId" class="btn theme_btn button_hover">Chi tiết</a>
+                        </div>
+                        <h4 class="sec_h4">Dom @item.DomName</h4>
+                        @if (context.HttpContext.Session.GetString("user") != null
+                        && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == true)
+                        {
+                        <a asp-action="Edit" asp-route-id="@item.DomId"><i class="fa fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.DomId"><i class="fa fa-trash-o"></i></a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--================ Accomodation Area  =================-->
+</section>

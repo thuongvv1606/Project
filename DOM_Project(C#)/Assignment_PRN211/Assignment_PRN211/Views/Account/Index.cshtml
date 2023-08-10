@@ -1,0 +1,120 @@
+﻿@model Assignment_PRN211.Models.User;
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Account";
+}
+ <div class="container-fluid px-2 px-md-4">
+     <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+      </div>
+      <div class="card card-body mx-3 mx-md-4 mt-n6">
+        <div class="row gx-4 mb-2">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+                    @if (Model == null)
+                    {
+                        <img src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+                    @if (Model != null && Model.UserGender == true)
+                    {
+                        <img src="https://image.vietstock.vn/avatar/Tran-Long_81690d74-e698-46dc-beb7-e8ca30fa78d1.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+                    @if (Model != null && Model.UserGender == false)
+                    {
+                        <img src="https://cdnx.voh.com.vn/voh/useravatar/2022/04/12/nh-dai-dien-FB-mac-dinh-nu.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    }
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                 @Model.UserId
+              </h5>
+              <p class="mb-0 font-weight-normal text-sm">
+                 @(Model.IsAdmin == true ? "Admin" : "Student")
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row">
+                <div class="col-6 col-xl-6">
+                    <div class="card card-plain h-100">
+                        <div class="card-header pb-0 p-3">
+                            <div class="row">
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <h6 class="mb-0" style="color: green">Thông tin cá nhân</h6>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <a asp-controller="Account" asp-action="EditProfile" asp-route-id="@Model.UserId">
+                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <hr class="horizontal gray-light my-4">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                    <strong class="text-dark">Họ tên:</strong>
+                                    @Model.UserName
+                                </li>
+                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Giới tính:</strong> 
+                                    @(Model.UserGender == true ? "Nam" : "Nữ")
+                                </li>
+                                <li class="list-group-item border-0 ps-0 text-sm">
+                                    <strong class="text-dark">Ngày sinh:</strong>
+                                    @(String.Format("{0:dd/MM/yyyy}", Model.UserDob))
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model != null && Model.IsAdmin == false)
+            {
+                <div class="col-6 col-xl-6">
+                    <div class="card card-plain h-100">
+                        <div class="card-header pb-0 p-3">
+                            <div class="row">
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <h6 class="mb-0" style="color: green">Thông tin kí túc xá</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <hr class="horizontal gray-light my-4">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Phòng KTX hiện tại:</strong>
+                                    @if (Model != null && Model.Orders.SingleOrDefault(p => p.SemesterId == "Su23") != null)
+                                    {
+                                        <span>
+                                            @Model.Orders.SingleOrDefault(p => p.SemesterId == "Su23").RoomId
+                                            - @Model.Orders.SingleOrDefault(p => p.SemesterId == "Su23").BedId
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>Sinh viên chưa <a asp-controller="Booking" asp-action="Index" style="color: red">đăng kí</a> KTX</span>
+                                    }
+                            </li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Học kì:</strong> Spring 2023</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Số dư tài khoản:</strong>
+                                    @if (Model != null && Model.Fee == null)
+                                    {
+                                        <span>0đ</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@((int)Model.Fee.Fee1)đ</span>
+                                    }
+                                </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>

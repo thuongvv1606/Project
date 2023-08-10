@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Error_Authourized";
+}
+@inject IHttpContextAccessor context;
+<!DOCTYPE html>
+<html>
+<head>  
+</head>
+<body style="text-align: center">
+    <p style="text-align: center; margin-top: 80px"><img src="~/image/error1.jpg" alt="alt"/> </p>
+    <h1>Bạn không có quyền vào trang này!</h1>
+    @if (context.HttpContext.Session.GetString("user") == null)
+    {
+        <h4>Vui lòng nhấn vào <a asp-controller="UserAccess" asp-action="Login" style="color: red">đây</a> để đăng nhập vào hệ thống!</h4>
+    }
+    <h4><a asp-controller="Home" asp-action="Index" style="color: red">Quay về trang chủ</a></h4>
+</body>
+</html>

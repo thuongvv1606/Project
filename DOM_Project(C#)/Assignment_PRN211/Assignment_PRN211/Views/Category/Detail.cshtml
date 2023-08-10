@@ -1,0 +1,183 @@
+﻿@using Assignment_PRN211.Models;
+@model IEnumerable<Assignment_PRN211.Models.Room>
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Category";
+    var cate = ViewBag.category;
+}
+<style>
+    th {
+        background-color: #f3c300;
+        color: white;
+    }
+</style>
+
+<body style="background-color: #FFD700;">
+<div class="row mb_30" style="background-color: #ffffff; margin: 1px">
+     <div class="col-md-3">
+            <div class="accomodation_item text-center">
+                <div class="hotel_img">
+                @if(cate.CategoryId == 3)
+                {
+                    <img src="~/image/room1.jpg" alt="">
+                }
+                else if (cate.CategoryId == 2)
+                {
+                    <img src="~/image/room2.jpg" alt="">
+                } else
+                {
+                    <img src="~/image/room4.jpg" alt="">
+                }
+            </div>
+                <h4 class="sec_h4">@cate.CategoryName</h4>
+                <h5> @((int)cate.Price) đ<small>/tháng</small></h5>
+                <h6>~ @((int)cate.Price * 4) đ/học kì</h6>
+            </div>
+            <div class="row" style="display: flex">
+                <a asp-controller="Category" asp-action="Index" class="btn theme_btn button_hover" style="margin: auto">Quay về trang trước</a>
+            </div>
+     </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="col-md-9">
+                <form asp-controller="Category" asp-action="Detail">
+                    <div class="row" style="float: right; margin: 7px">
+                        @if (!(context.HttpContext.Session.GetString("user") != null
+              && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false))
+                        {
+                            <select name="gender" style="padding-right: 5px;">
+                                <option value="0">Chọn giới tính</option>
+                                @if (ViewBag.gender == "true")
+                                {
+                                    <option value="true" selected>Nam</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Nam</option>
+                                }
+                                @if (ViewBag.gender == "false")
+                                {
+                                    <option value="false" selected>Nữ</option>
+                                }
+                                else
+                                {
+                                    <option value="false">Nữ</option>
+                                }
+                            </select>
+                        }
+                        <input type="hidden" name="gender" value="@ViewBag.gender">
+                        <input type="text" name="searchStr" value="@ViewBag.search">
+                        <button class="btn theme_btn button_hover"><i class="fa fa-search" style="color:white"></i></button>
+                    </div>
+                </form>
+                <div class="col-md-9" style="text-align: center; float: none;">
+                    <h4 style="color: darkorange; padding-top: 90px; margin: auto">
+                        Không tìm thấy phòng nào thuộc loại phòng kí túc xá này.
+                    </h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-9">
+                <form asp-controller="Category" asp-action="Detail" asp-route-id="@ViewBag.id"
+                      asp-route-searchStr="@ViewBag.search" asp-route-pageNumber="@ViewBag.page" asp-route-gender="@ViewBag.gender">
+                    <div class="row" style="float: right; margin: 7px">
+                        @if (!(context.HttpContext.Session.GetString("user") != null
+              && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false))
+                        {
+                            <select name="gender" style="padding-right: 5px;">
+                                <option value="0">Chọn giới tính</option>
+                                @if (ViewBag.gender == "true")
+                                {
+                                    <option value="true" selected>Nam</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Nam</option>
+                                }
+                                @if (ViewBag.gender == "false")
+                                {
+                                    <option value="false" selected>Nữ</option>
+                                }
+                                else
+                                {
+                                    <option value="false">Nữ</option>
+                                }
+                            </select>
+                        }
+                        <input type="hidden" name="gender" value="@ViewBag.gender">
+                        <input type="text" name="searchStr" value="@ViewBag.search">
+                        <button class="btn theme_btn button_hover"><i class="fa fa-search" style="color:white"></i></button>
+                    </div>
+                    <div>
+                        <p style="color: green">Tìm thấy <b>@ViewBag.count</b> phòng</p>
+                    </div>
+                </form>
+                <table class="table" style="float: none">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mã phòng
+                            </th>
+                            <th>
+                                Dom
+                            </th>
+                            <th>
+                                Phân loại
+                            </th>
+                            <th>
+                                Giới tính
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Room" asp-action="Detail" asp-route-id="@item.RoomId">@Html.DisplayFor(modelItem => item.RoomId)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dom.DomName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                </td>
+                                @if (item.Gender == true)
+                                {
+                                    <td style="color: blue;">
+                                        Nam
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="color: deeppink;">
+                                        Nữ
+                                    </td>
+                                }
+                            </tr>
+                        <td>
+                                @if (context.HttpContext.Session.GetString("user") != null
+                               && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == true)
+                                {
+                                <a asp-controller="Room" asp-action="Delete" asp-route-id="@item.RoomId"><i class="fa fa-trash-o"></i></a>
+                                }
+                        </td>
+                        }
+                    </tbody>
+                </table>
+                @for (int i = 1; i < (Math.Round(ViewBag.count / 10d, 1)); i++)
+                {
+                    <a asp-controller="Category" asp-action="Detail" asp-route-id="@ViewBag.id"
+                       asp-route-searchStr="@ViewBag.search" asp-route-pageNumber="@i" asp-route-gender="@ViewBag.gender"
+                       class="btn btn-default">
+                        @i
+                    </a>
+                }
+            </div>
+        }
+</div>
+</body>

@@ -1,0 +1,234 @@
+﻿@model IEnumerable<Assignment_PRN211.Models.Bed>
+@inject IHttpContextAccessor context;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Room";
+    Room room = ViewBag.room;
+}
+
+<body style="background-color: #FFD700;">
+    <div class="row mb_30" style="background-color: #ffffff; margin: 1px">
+        <div class="col-md-3">
+            <div class="accomodation_item text-center">
+                <div class="hotel_img">
+                    @if (room.DomId == 1)
+                    {
+                        <img src="~/image/doma.jpg" alt="" style="width: 100%">
+                    }
+                    else if (room.DomId == 2)
+                    {
+                        <img src="~/image/domb.jpg" alt="" style="width: 100%; height:auto">
+                    }
+                    else if (room.DomId == 3)
+                    {
+                        <img src="~/image/domc.jpg" alt="" style="width: 100%">
+                    }
+                    else if (room.DomId == 4)
+                    {
+                        <img src="~/image/domd.jpg" alt="" style="width: 100%">
+                    }
+                    else if (room.DomId == 5)
+                    {
+                        <img src="~/image/dome.jpg" alt="" style="width: 100%">
+                    }
+                    else
+                    {
+                        <img src="~/image/domf.jpg" alt="" style="width: 100%">
+                    }
+                </div>
+                <h4 class="sec_h4">Dom @room.Dom.DomName</h4>
+            </div>
+            <div class="row" style="display: flex">
+                <a asp-controller="Room" asp-action="List" class="btn theme_btn button_hover" style="margin: auto">Danh sách Phòng KTX</a>
+            </div>
+            @if (context.HttpContext.Session.GetString("user") != null
+                     && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false)
+            {
+                <div class="row" style="display: flex">
+                    <a asp-controller="Booking" asp-action="Index" class="btn theme_btn button_hover" style="margin: 5px auto;">Quay về trang trước</a>
+                </div>
+            }
+        </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="col-md-6">
+                <form asp-controller="Room" asp-action="Detail" id="fr">
+                    <div class="row" style="float: right; margin: 7px">
+                        @if (!(context.HttpContext.Session.GetString("user") != null
+                       && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false))
+                        {
+                            <select name="status" style="padding-right: 5px;" onchange="change()">
+                                <option value="0">Chọn trạng thái</option>
+                                @if (ViewBag.status == "true")
+                                {
+                                    <option value="true" selected>Đã đặt</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Đã đặt</option>
+                                }
+                                @if (ViewBag.status == "false")
+                                {
+                                    <option value="false" selected>Chưa đặt</option>
+                                }
+                                else
+                                {
+                                    <option value="false">Chưa đặt</option>
+                                }
+                            </select>
+                        }
+                        <input type="hidden" name="status" value="@ViewBag.status">
+                    </div>
+                </form>
+                <div class="col-md-9" style="text-align: center; float: none;">
+                    <h4 style="color: darkorange; padding-top: 90px; margin: auto">
+                        Không tìm thấy giường nào tại phòng này.
+                    </h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-6">
+                <form asp-controller="Room" asp-action="Detail" asp-route-id="@ViewBag.id"
+                      asp-route-status="@ViewBag.status" id="fr">
+                    <div class="row" style="float: right; margin: 7px">
+                        @if (!(context.HttpContext.Session.GetString("user") != null
+                       && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false))
+                        {
+                            <select name="status" style="padding-right: 5px;" onchange="change()">
+                                <option value="0">Chọn trạng thái</option>
+                                @if (ViewBag.status == "true")
+                                {
+                                    <option value="true" selected>Đã đặt</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Đã đặt</option>
+                                }
+                                @if (ViewBag.status == "false")
+                                {
+                                    <option value="false" selected>Chưa đặt</option>
+                                }
+                                else
+                                {
+                                    <option value="false">Chưa đặt</option>
+                                }
+                            </select>
+                        }
+                        <input type="hidden" name="status" value="@ViewBag.status">
+                    </div>
+                    <div>
+                        <p style="color: green">Tìm thấy <b>@ViewBag.count</b> giường</p>
+                    </div>
+                </form>
+                <table class="table" style="float: none">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mã giường
+                            </th>
+                            <th>
+                                Mã Phòng
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            @if (context.HttpContext.Session.GetString("user") != null
+              && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == true)
+                            {
+                                <th>
+                                    Người đặt
+                                </th>
+                            }
+                            @if (context.HttpContext.Session.GetString("user") != null
+              && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false)
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BedId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RoomId)
+                                </td>
+                                @if (item.Orders.SingleOrDefault() == null)
+                                {
+                                    <td style="color: red;">
+                                        Chưa đặt
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="color: green;">
+                                        Đã đặt
+                                    </td>
+                                }
+                                @if (context.HttpContext.Session.GetString("user") != null
+                  && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == true)
+                                {
+                                    @if (item.Orders.SingleOrDefault() == null)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Orders.SingleOrDefault().UserId</td>
+                                    }
+                                }
+                                @if (context.HttpContext.Session.GetString("user") != null
+                              && JsonConvert.DeserializeObject<User>(context.HttpContext.Session.GetString("user")).IsAdmin == false)
+                                {
+                                    @if (@item.Orders.Count == 0 && ViewBag.o == null)
+                                    {
+                                        <td><a asp-controller="Booking" asp-action="Order" asp-route-id="@item.BedId" asp-route-roomid="@item.RoomId">Đặt phòng</a></td>
+                                    }
+                                    else if (@item.Orders.Count == 0 && ViewBag.o != null)
+                                    {
+                                        <td><a asp-controller="Booking" asp-action="Order" asp-route-id="@item.BedId" asp-route-roomid="@item.RoomId">Đổi phòng</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a asp-controller="Booking" asp-action="RequestChangeRoom" asp-route-uid="@item.Orders.SingleOrDefault().UserId" asp-route-id="@item.BedId" asp-route-roomid="@item.RoomId">Đổi phòng</a></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        <div class="col-md-3">
+            <div class="accomodation_item text-center">
+                <div class="hotel_img">
+                    @if (room.CategoryId == 3)
+                    {
+                        <img src="~/image/room1.jpg" alt="">
+                    }
+                    else if (room.CategoryId == 2)
+                    {
+                        <img src="~/image/room2.jpg" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/image/room4.jpg" alt="">
+                    }
+                </div>
+                <h4 class="sec_h4">@room.Category.CategoryName</h4>
+                <h5> @((int)room.Category.Price) đ<small>/tháng</small></h5>
+                <h6>~ @((int)room.Category.Price * 4) đ/học kì</h6>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function change() {
+        document.getElementById("fr").submit();
+    }
+</script>

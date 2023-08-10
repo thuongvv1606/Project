@@ -1,0 +1,109 @@
+﻿@model Assignment_PRN211.Models.User;
+@{
+	ViewData["Title"] = "Register";
+}
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="~/images1/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/fonts1/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/fonts1/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor1/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/css1/util.css">
+<link rel="stylesheet" type="text/css" href="~/css1/main.css">
+<!--===============================================================================================-->
+<body style="background-color: #FFD700;">
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form asp-action="Register" asp-controller="UserAccess" method="post" class="login100-form validate-form">
+					<span class="login100-form-title p-b-43">
+						Đăng kí
+					</span>
+
+
+					<p class="text-center p-t-46 p-b-20" style="color: red">@ViewBag.error</p>
+
+
+					Họ tên <span style="color: red">*</span>:
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" asp-for="UserName" required>
+					</div>
+
+					ID người dùng <span style="color: red">*</span>:
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" asp-for="UserId"
+							   required pattern="(?:(?:HE|HS|HA)[0-9]{6}|ADMIN[0-9]{3})"
+							   onchange="this.setCustomValidity(this.validity.patternMismatch ? 'ID phải có định dạng HExxxxxx, HSxxxxxx, HAxxxxxx hoặc ADMINxxx.' : '')">
+					</div>
+
+					Ngày sinh <span style="color: red">*</span>:
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="datetime-local" asp-for="UserDob" min="1940-01-01 12:00:00" max="2010-12-31 12:00:00" required>
+					</div>
+
+					Giới tính <span style="color: red">*</span>: <span style="padding-right: 200px;"></span>
+					<input type="radio" value="true" name="gender" /> Male <span style="padding-right: 30px;"></span>
+					<input type="radio" value="false" name="gender" /> Female<br />
+
+					Mật khẩu <span style="color: red">*</span>:
+					<div class="wrap-input100 validate-input">
+						<input class="input100" pattern="^.{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Mật khẩu phải chứa 6 kí tự trở lên.' : '')"
+							   type="password" name="password" required asp-for="Password">
+					</div>
+
+					Nhập lại mật khẩu <span style="color: red">*</span>:
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="repassword" required>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Đăng kí
+						</button>
+					</div>
+
+					<div class="text-center p-t-46 p-b-20">
+						<span class="txt2">
+							hoặc đăng kí sử dụng
+						</span>
+					</div>
+
+					<div class="login100-form-social flex-c-m">
+						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+							<i class="fa fa-facebook-f" aria-hidden="true"></i>
+						</a>
+
+						<a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+							<i class="fa fa-google" aria-hidden="true"></i>
+						</a>
+					</div>
+
+
+					<div>
+						<p class="text-center p-t-46 p-b-20">
+							<a asp-controller="UserAccess" asp-action="Login">Quay về Đăng nhập</a>
+						</p>
+					</div>
+				</form>
+
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

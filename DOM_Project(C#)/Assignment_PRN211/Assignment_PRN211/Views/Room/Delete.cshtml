@@ -1,0 +1,37 @@
+﻿@model Assignment_PRN211.Models.Room
+
+@{
+    ViewData["Title"] = "Room";
+}
+
+<h3 class="mb-30 title_color">Xóa Phòng</h3>
+<hr />
+    <h4>Room</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Mã Loại phòng
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryId)
+        </dd>
+        <dt class="col-sm-2">
+            Mã Tòa
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dom.DomId)
+        </dd>
+        <dt class="col-sm-2">
+            Giới tính
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RoomId" />
+        <button type="submit" class="btn theme_btn button_hover">Xóa</button> |
+        <a asp-controller="Room" asp-action="List" class="btn theme_btn button_hover">Hủy</a>
+    </form>
+</div>
